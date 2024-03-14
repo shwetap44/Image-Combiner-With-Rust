@@ -70,7 +70,7 @@ fn find_image_from_path(path: String)-> Result<(DynamicImage, ImageFormat), Imag
     Ok(image_reader) => {
       if let Some(image_format) = image_reader.format() {
         match image_reader.decode() {
-          Ok(image) => OK((image, image_format)),
+          Ok(image) => Ok((image, image_format)),
           Err(e) => Err(ImageDataErrors::UnableToDecodeImage(e)),
         }
       } else {
